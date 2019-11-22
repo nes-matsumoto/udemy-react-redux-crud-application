@@ -7,10 +7,12 @@ export const DECREMENT = 'DECREMENT'
 
 //アクションクリエータ
 export const increment = () =>({
-        type: INCREMENT
+    type: INCREMENT
 })
 //アクションクリエータ
 export const decrement = () => ({
+    type: DECREMENT
+
 })
 
 
