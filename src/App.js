@@ -1,58 +1,36 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React ,{Component} from 'react';
 
 
-//JSXでの表現
-/*function App() {
-  const greeting = "Nice!Greeting!"
-const dom = <h1 className="foo">{greeting}</h1>
 
-return(
-  <React.Fragment>
-    <label htmlFor=""bar>bar</label>
-    <input type="text" onChange={() => {console.log("I am clicked")}}/>;
-  </React.Fragment>
-)
-}
-*/
-const App = () => {
+const App = () => (<Counter></Counter>)
 
-  const profiles = [
-    {name:"kazuma",age:24},
-    {name:"taro",age:10},
-    {name:"NoName" ,age:5}
-  ]
 
-  return(
-    <div>
-      {
-        profiles.map((profile,index) => {
-          return <User name={profile.name} age={profile.age} key={index}/>
 
-        }) 
-      }
-    </div>
-  )
+class Counter extends Component  {
+
+  constructor(props){
+    super(props)
+    this.state = {count:0}
+  }
+
+  handlePlusButton = () => {
+    this.setState({count : this.state.count + 1})
+  }
+
+  handleMinusButton = () => {
+    this.setState({count : this.state.count - 1})
+  }
+
+  render(){
+    return(
+      <React.Fragment>
+        <div>count:{this.state.count}</div>
+        <button onClick={this.handlePlusButton}>+1</button>
+        <button onClick={this.handleMinusButton}>-1</button>
+
+      </React.Fragment>
+    )
+  }
 }
 
-
-const User = (props) => {
-  return <div>Hello!!{props.name} age:{props.age}</div>
-}
-
-/*
-User.defaultProps = {
-  age:1
-}
-*/
-User.propTypes= {
-  name: PropTypes.string,
-  age: PropTypes.number.isRequired
-}
-
-//Javascriptでの表現
-/*function App() {
-  return React.createElement("div",null,"Matsumoto Kazuma!!");
-}
-*/
 export default App;
