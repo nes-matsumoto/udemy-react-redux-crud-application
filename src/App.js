@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 
 //JSXでの表現
@@ -17,31 +18,37 @@ return(
 const App = () => {
 
   const profiles = [
-    {name:"kazuma",age:10},
-    {name:"taro",age:10}
+    {name:"kazuma",age:24},
+    {name:"taro",age:10},
+    {name:"NoName" ,age:5}
   ]
 
   return(
     <div>
       {
-        profiles.map((profile) => {
-          return <user name={"profile.name"} age={profile.age}/>
+        profiles.map((profile,index) => {
+          return <User name={profile.name} age={profile.age} key={index}/>
 
         }) 
       }
-
-      <user name={"kazuma"} age={39}/>
-
-      <user name={"Taro"} age={19}/>
     </div>
   )
 }
 
 
-const user = (props) => {
+const User = (props) => {
   return <div>Hello!!{props.name} age:{props.age}</div>
 }
 
+/*
+User.defaultProps = {
+  age:1
+}
+*/
+User.propTypes= {
+  name: PropTypes.string,
+  age: PropTypes.number.isRequired
+}
 
 //Javascriptでの表現
 /*function App() {
